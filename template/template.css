@@ -1,0 +1,481 @@
+﻿@font-face {
+	font-family: 'Trone-KaW-Regular';
+	font-weight: normal;
+	src: url('Trone-KaW-Regular.eot'); /* IE9 Compat Modes */
+	src: url('Trone-KaW-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('Trone-KaW-Regular.ttf')  format('truetype'); /* Modern Browsers */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #06070C;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*===Debug mode modal===*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 150px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: rgba(195, 191, 191, 0.86);
+    margin: 0 auto;
+    padding: 40px;
+    border: 4px solid #888;
+    width: 30%;
+    text-align: center;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+/* Green */
+.success:hover {
+    background-color: #46a049;
+}
+
+.danger {
+    background-color: #f44336;
+}
+
+/* Red */
+.danger:hover {
+    background: #da190b;
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 24px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    color: rgba(0, 0, 0, 0.44);
+    font-family: Trone-KaW-Regular;
+}
+
+/*===Preloader===*/
+.webpreloader__fullscreen-container {
+    width: 100%;
+    height: 100%;
+    background-color: #06070C;
+}
+
+.webpreloader__game-container {
+    display:block;
+    width:100%;
+    height: 100%
+}
+
+.webpreloader__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.webpreloader__animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: initial;
+}
+
+.webpreloader__logo-throne {
+    width: 563px;
+    height: 477px;
+    position: absolute;
+    bottom: 96px;
+    left: 358px;
+}
+
+.webpreloader__footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.webpreloader__main {
+    width: 1293px;
+    height: 863px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.webpreloader__flag {
+    position: absolute;
+    right: -35px;
+    width: 478px;
+    height: 603px;
+}
+
+.webpreloader__header {
+    margin-top: 25px;
+    margin-bottom: 28px;
+    color: #eaecf7;
+    text-align: center;
+    font-size: 18px;
+    font-family: Trone-KaW-Regular, serif;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.webpreloader__skill-description {
+    margin-top: -19px;
+    display: block;
+    color: #d7c3a7;
+    text-align: center;
+    font-size: 14px;
+    font-family: Trone-KaW-Regular, serif;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.webpreloader__skill-value {
+    margin-top: 0;
+    display: block;
+    color: #ffc97c;
+    text-align: center;
+    font-size: 18px;
+    font-family: Trone-KaW-Regular, serif;
+    visibility: hidden;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.webpreloader__skill {
+    margin-top: -13px;
+    height: 177px;
+    text-align: center;
+}
+
+.webpreloader__skill-icon-background {
+    position: relative;
+    background-image: url("./loader_assets/resources/icon_frame_01.png");
+    width: 164px;
+    height: 150px;
+    display: inline-block;
+}
+
+.webpreloader__icon {
+    position: absolute;
+    left: 42px;
+    top: 42px;
+    width: 80px;
+    height: 80px;
+}
+
+.webpreloader__foreground {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+    background-image: url('./loader_assets/resources/icon_frame_02.png');
+    width: 94px;
+    height: 92px;
+}
+
+.webpreloader__progress {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 125px;
+
+    background: url("./loader_assets/resources/loader_background.png") no-repeat center center;
+    background-size: 100% 100%;
+    width: 462px;
+    height: 28px;
+}
+
+.webpreloader__progress-left {
+    position: absolute;
+    left: -5px;
+    width: 28px;
+    height: 28px;
+    background: url("./loader_assets/resources/progress_decor_left.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.webpreloader__progress-right {
+    position: absolute;
+    right: -9px;
+    width: 28px;
+    height: 28px;
+    background: url("./loader_assets/resources/progress_decor_right.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.webpreloader__progress-wrapper {
+    overflow: hidden;
+    position: absolute;
+    width: 462px;
+    height: 24px;
+    top: 2px;
+    left: 1px;
+}
+
+.webpreloader__progress-bar {
+    position: absolute;
+    background: url("./loader_assets/resources/progress.png") no-repeat center center;
+    background-size: 100% 100%;
+    width: 462px;
+    height: 24px;
+}
+
+.webpreloader__progress-value {
+    position: absolute;
+    color: #eaecf7;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    top: 5px;
+    font-family: Trone-KaW-Regular, serif;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.webpreloader__tips-text {
+    width: 613px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 66px;
+    font-size: 12px;
+    color: #666666;
+    text-align: center;
+    font-family: Trone-KaW-Regular, serif;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.webpreloader__plarium-logo {
+    background-image: url('./loader_assets/resources/plarium_logo.png');
+    width: 40px;
+    height: 27px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 23px;
+}
+
+.webpreloader__shadow-left {
+    position: absolute;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    width: 300px;
+    height: 100%;
+}
+
+.webpreloader__shadow-right {
+    position: absolute;
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    width: 300px;
+    height: 100%;
+}
+
+/*=== Unsupported browser alert ===*/
+.updateBrowser__container {
+    display: none;
+    width: 534px;
+    height: 487px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    background: url("loader_assets/resources/alert_bg.png") top left no-repeat;
+}
+
+.updateBrowser__header {
+    font-family: Trone-KaW-Regular, serif;
+    top: 21px;
+    width: 534px;
+    text-align: center;
+    position: absolute;
+    font-size: 18px;
+    color: #C6C2C2;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__title {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 16px;
+    color: #C6C2C2;
+    top: 120px;
+    width: 534px;
+    text-align: center;
+    position: absolute;
+    padding-left: 60px;
+    padding-right: 60px;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__text-top {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 14px;
+    color: #838181;
+    top: 237px;
+    width: 527px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    position: absolute;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__text-bottom {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 14px;
+    color: #838181;
+    top: 314px;
+    width: 534px;
+    text-align: center;
+    position: absolute;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__inline-text {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 14px;
+    color: #98AECA;
+    top: 20px;
+    text-align: center;
+    display: inline-block;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__link {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 14px;
+    color: #98AECA;
+    top: 20px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: underline;
+}
+
+.updateBrowser__link-container {
+    position: absolute;
+    top: 274px;
+    width: 534px;
+    text-align: center;
+}
+
+.updateBrowser__button-wrapper {
+    width: 534px;
+    position: absolute;
+    bottom: 46px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.updateBrowser__continue-button {
+    display: inline-block;
+    background: url(loader_assets/resources/btn_orange_110x35_up.png) top right no-repeat;
+    width: 110px;
+    height: 35px;
+    padding-top:7px;
+    cursor: pointer;
+}
+
+.updateBrowser__continue-text {
+    font-family: Trone-KaW-Regular, serif;
+    font-size: 12px;
+    color: #C6C2C2;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.updateBrowser__continue-button:hover {
+    background: url(loader_assets/resources/btn_orange_110x35_over.png) top right no-repeat;
+}
+
+.updateBrowser__continue-button:active {
+    background: url(loader_assets/resources/btn_orange_110x35_down.png) top right no-repeat;
+}
+
+.updateBrowser__preload {
+    display: none;
+}

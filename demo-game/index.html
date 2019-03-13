@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Unity WebGL Player | 2d-animation-samples-master</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var Timer = /** @class */ (function () {
+      function Timer(label, job) {
+        this.label = label;
+        if (job == null) {
+          this.startTime = performance.now();
+        } else {
+          this.job = job;
+          this.set(job.starttime, job.endtime);
+        }
+      }
+      Timer.prototype.start = function () {
+        this.startTime = performance.now();
+      };
+      Timer.prototype.stop = function () {
+        this.endTime = performance.now();
+        console.log(" timer stop: " +  this.label + " " + this.toString());
+      };
+      Timer.prototype.set = function (startTime, endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+      };
+      Timer.prototype.isDone = function () {
+        return typeof this.endTime != "undefined";
+      };
+      Timer.prototype.toString = function () {
+        var text = this.label + ": ";
+        if (this.isDone()) {
+          // text += (this.endTime - this.startTime).toFixed(2);
+          text += (this.endTime - this.startTime).toFixed(0);
+          if ((typeof this.job !== "undefined") && this.job.result.value.cached) {
+            text += " (from cache)";
+          }
+        } else {
+          var progress = ((performance.now() - this.startTime).toFixed(2) / 1000) % 3;
+          text += "in progress ";
+          for (i = 0; i < progress; i++) {
+            text += ".";
+          }
+        }
+        return text;
+      };
+      return Timer;
+    }());
+
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGLBuild.json", {
+      onProgress: UnityProgress,
+      Module: {
+        // this does not work in 2018.3
+        wasmRequest: function (wasmInstantiate, callback) {
+          var wasmInstantiation = new Timer("WebAssembly Instantiation");
+          // Stats.Loading.timers.push(wasmInstantiation);
+          wasmInstantiate(this.wasmBinary).then(function (result) {
+            wasmInstantiation.stop();
+            callback(result.instance);
+          });
+        },
+        onRuntimeInitialized: function () {
+          Module = this;
+          var engineInitialization = new Timer("Engine Initialization");
+          // Stats.Loading.timers.push(engineInitialization);
+          Module.postRun.unshift(function () {
+            var savedReallocBuffer = Module.reallocBuffer;
+            Module.reallocBuffer = function (size) {
+              var retValue = savedReallocBuffer(size);
+              // TODO: notify runtime about heap resize
+              return retValue;
+            }
+            engineInitialization.stop();
+          });
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="webgl-content">
+    <div id="gameContainer" style="width: 960px; height: 600px"></div>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      <div class="title">2d-animation-samples-master</div>
+    </div>
+  </div>
+</body>
+
+</html>

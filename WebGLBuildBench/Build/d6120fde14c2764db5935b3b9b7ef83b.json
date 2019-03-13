@@ -1,0 +1,14 @@
+{
+"companyName": "Unity Technologies",
+"productName": "Benchmarks",
+"dataUrl": "5530f2166e3b11453ea9a91af2dce9c7.unityweb",
+"wasmCodeUrl": "a63b61fd72da68c934776139a2399a44.unityweb",
+"wasmFrameworkUrl": "a29f53c466249a809290713c2ddd6b6d.unityweb",
+"wasmSymbolsUrl": "6d79d92ac2b4ad99f2bf612dd4b0bb6b.unityweb",
+"TOTAL_MEMORY": 536870912,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"}
+}
